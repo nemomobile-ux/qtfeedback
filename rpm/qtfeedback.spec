@@ -12,8 +12,6 @@ BuildRequires:  qt5-qtopengl-devel
 BuildRequires:  qt5-qtdeclarative-devel
 BuildRequires:  qt5-qtdeclarative-qtquick-devel
 BuildRequires:  qt5-qmake
-BuildRequires:  qt5-qttools-qdoc
-BuildRequires:  qt5-qttools-qthelp-devel
 BuildRequires:  qt5-tools
 BuildRequires:  fdupes
 
@@ -36,19 +34,6 @@ mobile and embedded systems without rewriting the source code.
 .
 This package contains the QtFeedback module development files
 
-%package doc
-Summary:    Qt QtFeedback - documentation
-Group:      Qt/Qt
-Requires:   %{name} = %{version}-%{release}
-
-%description doc
-Qt is a cross-platform application and UI framework. Using Qt, you can
-write web-enabled applications once and deploy them across desktop,
-mobile and embedded systems without rewriting the source code.
-.
-This package contains the QtFeedback module documentation
-
-
 %prep
 %setup -q -n %{name}-%{version}
 
@@ -56,11 +41,10 @@ This package contains the QtFeedback module documentation
 touch .git # To make sure syncqt is used
 %qmake5 CONFIG+=package multimedia_disabled=yes
 make %{?_smp_mflags}
-make docs
 
 %install
 rm -rf %{buildroot}
-%qmake5_install install_qch_docs
+%qmake5_install
 
 # Fix wrong path in pkgconfig files
 find %{buildroot}%{_libdir}/pkgconfig -type f -name '*.pc' \
@@ -99,7 +83,3 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 %{_includedir}/qt5/*
 %{_datadir}/qt5/mkspecs/
 %{_libdir}/cmake/
-
-%files doc
-%defattr(-,root,root,-)
-%{_docdir}/qt5/*
