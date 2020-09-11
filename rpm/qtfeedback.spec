@@ -83,5 +83,5 @@ cp %{buildroot}/%{_libdir}/pkgconfig/Qt5Feedback.pc %{buildroot}/%{_libdir}/pkgc
 %{_libdir}/libQt5Feedback.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
-%{_datadir}/qt5/mkspecs/
+%{_prefix}/*/qt5/mkspecs/
 %{_libdir}/cmake/
