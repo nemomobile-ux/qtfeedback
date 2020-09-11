@@ -6,13 +6,15 @@ Group:      Qt/Qt
 License:    LGPLv2.1 with exception or GPLv3
 URL:        http://qt.nokia.com
 Source0:    %{name}-%{version}.tar.bz2
-BuildRequires:  qt5-qtcore-devel
-BuildRequires:  qt5-qtgui-devel
-BuildRequires:  qt5-qtopengl-devel
-BuildRequires:  qt5-qtdeclarative-devel
-BuildRequires:  qt5-qtdeclarative-qtquick-devel
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Quick)
+%if !0%{?fedora}
 BuildRequires:  qt5-qmake
 BuildRequires:  qt5-tools
+%endif
 BuildRequires:  fdupes
 
 %description
